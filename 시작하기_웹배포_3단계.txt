@@ -1,0 +1,16 @@
+ANIPIN ARENA - 파이썬 없이 접속하는 인터넷 버전
+
+1) 압축 풀고 안의 파일을 GitHub 새 저장소에 올리기
+   https://github.com/new
+   주의: ZIP 하나가 아니라 server.py, render.yaml, static 폴더 등을 그대로 올려야 함
+
+2) Render에서 GitHub 저장소 연결 후 Blueprint 배포
+   https://dashboard.render.com/blueprints
+   New Blueprint Instance → GitHub 연결 → 저장소 선택 → Apply
+
+3) Render가 만들어 준 https://...onrender.com 주소를 크롬에서 열기
+   친구도 같은 URL로 접속하고 회원가입 가능
+
+사용자 PC에 Python 설치 불필요!
+중요: Render 무료 DB는 30일 만료. 장기 운영 전 유료 전환/백업 필요.
+더 상세한 설명은 README.md에 있음.

@@ -1,0 +1,30 @@
+# PAID continuous service - incurs charges upon deployment
+# Cost may change. Review Render's current pricing before applying.
+services:
+  - type: web
+    name: anipin-arena-web
+    runtime: python
+    region: singapore
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT --workers 1 --proxy-headers
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DATABASE_URL
+        fromDatabase:
+          name: anipin-arena-db
+          property: connectionString
+      - key: COOKIE_SECURE
+        value: 'true'
+      - key: APP_ENV
+        value: production
+
+databases:
+  - name: anipin-arena-db
+    plan: basic-256mb
+    databaseName: anipin_arena
+    region: singapore
+    ipAllowList: []
